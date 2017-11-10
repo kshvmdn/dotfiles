@@ -1,0 +1,41 @@
+{
+	"bold_folder_labels": false,
+	"caret_extra_bottom": 3,
+	"caret_extra_top": 3,
+	"caret_style": "blink",
+	"color_scheme": "Packages/User/GitHub Light.tmTheme",
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": false,
+	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".sass-cache",
+		".bundle",
+		"__pycache__"
+	],
+	"font_face": "SF Mono",
+	"font_size": 11,
+	"highlight_modified_tabs": true,
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"margin": 5,
+	"overlay_scroll_bars": "enabled",
+	"rulers":
+	[
+		72,
+		80
+	],
+	"scroll_past_end": true,
+	"shift_tab_unindent": true,
+	"tab_size": 2,
+	"theme": "Piatto Light.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"wide_caret": true,
+	"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_"
+}

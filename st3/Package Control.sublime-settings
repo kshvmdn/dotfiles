@@ -1,0 +1,37 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Advanced CSV",
+		"Babel",
+		"Clang-Complete",
+		"DocBlockr",
+		"EditorConfig",
+		"EJS",
+		"Emmet",
+		"Exalt",
+		"GitGutter",
+		"GoImports",
+		"GoSublime",
+		"HTMLBeautify",
+		"Liquid",
+		"MarkdownEditing",
+		"Missing Palette Commands",
+		"nginx",
+		"Package Control",
+		"Pretty JSON",
+		"Pug",
+		"Python Improved",
+		"Rust Enhanced",
+		"SassBeautify",
+		"SCSS",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-json",
+		"Theme - Piatto",
+		"TOML"
+	]
+}

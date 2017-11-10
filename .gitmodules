@@ -1,0 +1,39 @@
+[submodule "vim/.vim/bundle/editorconfig-vim"]
+	path = vim/.vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/.vim/bundle/vim-airline-themes"]
+	path = vim/.vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim/.vim/bundle/vim-colors-paramount"]
+	path = vim/.vim/bundle/vim-colors-paramount
+	url = https://github.com/owickstrom/vim-colors-paramount
+[submodule "vim/.vim/bundle/vim-gitgutter"]
+	path = vim/.vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "vim/.vim/bundle/vim-godef"]
+	path = vim/.vim/bundle/vim-godef
+	url = https://github.com/dgryski/vim-godef
+[submodule "vim/.vim/bundle/vim-numbertoggle"]
+	path = vim/.vim/bundle/vim-numbertoggle
+	url = git://github.com/jeffkreeftmeijer/vim-numbertoggle.git
+[submodule "vim/.vim/bundle/vim-repeat"]
+	path = vim/.vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "vim/.vim/bundle/vim-sensible"]
+	path = vim/.vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/.vim/bundle/vim-go"]
+	path = vim/.vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "st3/themes/github-textmate-theme"]
+	path = st3/themes/github-textmate-theme
+	url = https://github.com/primer/github-textmate-theme

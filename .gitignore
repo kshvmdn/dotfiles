@@ -1,0 +1,6 @@
+# Vim tmp directories
+vim/.vim/tmp/**/*
+!vim/.vim/tmp/.gitkeep
+
+# pathogen
+vim/.vim/autoload

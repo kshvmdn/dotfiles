@@ -1,0 +1,33 @@
+# Prompts
+export PS1='\[\033]0;\W\007\][\w]$(prompt_git "\[\e[0m\] : \[\e[0;37m\]" "\[\e[0m\]\[\e[1;37m\]")\[\e[0m\]\n› '
+export PS2='\[\[\e[0;31m\]\]→ \[\e[0m\]'
+
+# Make Sublime the default editor
+export EDITOR="subl -w";
+
+# Increase Bash history nsize; allow 32³ entries (default is 500); omit
+# duplicates and commands that begin with a space from history.
+export HISTSIZE="32768";
+export HISTFILESIZE="${HISTSIZE}";
+export HISTCONTROL="ignoreboth";
+
+# LS colors
+export LSCOLORS="hxFxCxdxBxegedabagacad";
+
+# Enable persistent REPL history for `node`; allow upto 32³ entries (default is
+# 1000); use sloppy mode by default, matching web browsers.
+export NODE_REPL_HISTORY=~/.node_history;
+export NODE_REPL_HISTORY_SIZE="32768";
+export NODE_REPL_MODE="sloppy";
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING="UTF-8";
+
+# Go
+export GOPATH="$HOME/go";
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+
+# Android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
