@@ -37,3 +37,6 @@
 [submodule "st3/themes/github-textmate-theme"]
 	path = st3/themes/github-textmate-theme
 	url = https://github.com/primer/github-textmate-theme
+[submodule "vim/.vim/bundle/vim-colors-off"]
+	path = vim/.vim/bundle/vim-colors-off
+	url = https://github.com/pbrisbin/vim-colors-off
