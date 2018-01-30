@@ -17,7 +17,7 @@ set synmaxcol=200
 " Colors
 set t_Co=256
 set background=dark
-colorscheme paramount
+colorscheme off
 hi Normal ctermbg=none
 
 " Basics
@@ -27,7 +27,6 @@ set noshowmode
 set laststatus=2
 set number
 set ruler
-set colorcolumn=80
 set display+=lastline
 set scrolloff=10
 set sidescrolloff=20
@@ -103,5 +102,5 @@ endfunction
 let g:go_fmt_command = "goimports"
 
 " vim-airline
-let g:airline_theme='minimalist'
+let g:airline_theme='serene'
 let g:airline#extensions#tabline#enabled=1
