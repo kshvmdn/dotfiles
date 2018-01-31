@@ -3,6 +3,10 @@ for file in ~/.bash_{aliases,functions,exports,path}; do
 done;
 unset file;
 
+# Tab completion
+bind 'set show-all-if-ambiguous on'
+bind 'set completion-ignore-case on'
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
@@ -18,7 +22,3 @@ fi
 if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
   source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
 fi
-
-# Tab completion
-bind 'set show-all-if-ambiguous on'
-bind 'set completion-ignore-case on'

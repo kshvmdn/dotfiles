@@ -107,3 +107,8 @@ function prompt_git() {
     return;
   fi;
 }
+
+function shortpwd() {
+  cwd=$(pwd | sed "s#${HOME}#~#g" | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+  echo -n $cwd
+}
