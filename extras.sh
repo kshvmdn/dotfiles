@@ -4,8 +4,8 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # brews and casks
-brew install $(cat ./misc/Brewfile | grep -v "#")
-brew cask install $(cat ./misc/Caskfile | grep -v "#")
+brew install $(cat ./misc/homebrew/Brewfile | grep -v "#")
+brew cask install $(cat ./misc/homebrew/Caskfile | grep -v "#")
 brew cleanup
 
 # Go tools

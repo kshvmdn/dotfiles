@@ -27,4 +27,4 @@ mv ~/{.gitconfig,.gitignore_global} $BAK/git; (
 mkdir -p ~/dev/{bin,src/{github.com/{kashav,kshvmdn},gitlab.com/{chapsule,kashav}}}
 
 mv ~/.tmux.config ~/$BAK/misc
-ln -sf $(pwd)/misc/.tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/misc/tmux/.tmux.conf ~/.tmux.conf
