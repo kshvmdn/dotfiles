@@ -29,7 +29,7 @@
 	path = vim/.vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/.vim/bundle/vim-vingegar"]
-	path = vim/.vim/bundle/vim-vingegar
+	path = vim/.vim/bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar
 [submodule "vim/.vim/bundle/vim-surround"]
 	path = vim/.vim/bundle/vim-surround
