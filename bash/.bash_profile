@@ -7,11 +7,14 @@ unset file;
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob;
-
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
+
+# Don't automatically run history commands.
+shopt -s histverify;
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
 
 # Bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then

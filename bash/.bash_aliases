@@ -4,7 +4,8 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 
 # File/directory listing
-alias ls="ls -AFh"
+alias ls="ls -Fh"
+alias la="ls -AFh"
 alias ll="ls -AFhl"
 
 # Make sudo play nicely with other aliases.
@@ -24,7 +25,7 @@ alias dl="cd $HOME/Downloads"
 alias dt="cd $HOME/Desktop"
 
 # School
-alias madankas="ssh madankas@teach.cs.toronto.edu"
+alias madankas="ssh -i ~/.ssh/cdf madankas@teach.cs.toronto.edu"
 alias school="cd $HOME/dev/src/github.com/kshvmdn/uoft"
 
 # Lock the screen
