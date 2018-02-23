@@ -1,9 +1,6 @@
 [submodule "vim/.vim/bundle/editorconfig-vim"]
 	path = vim/.vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/.vim/bundle/vim-colors-paramount"]
 	path = vim/.vim/bundle/vim-colors-paramount
 	url = https://github.com/owickstrom/vim-colors-paramount
@@ -43,3 +40,18 @@
 [submodule "misc/fonts/leaguemono"]
 	path = misc/fonts/leaguemono
 	url = https://github.com/kshvmdn/leaguemono
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "vim/.vim/bundle/vim-sneak"]
+	path = vim/.vim/bundle/vim-sneak
+	url = https://github.com/justinmk/vim-sneak
+[submodule "vim/.vim/bundle/fzf.vim"]
+	path = vim/.vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/.vim/bundle/ale"]
+	path = vim/.vim/bundle/ale
+	url = https://github.com/w0rp/ale
+[submodule "vim/.vim/bundle/vim-multiple-cursors"]
+	path = vim/.vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
