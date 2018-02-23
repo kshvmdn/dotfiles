@@ -1,13 +1,10 @@
 set nocompatible
 
-let mapleader=","
-let maplocalleader="\\"
-
 execute pathogen#infect()
 
-syntax on
 colorscheme off
 filetype plugin indent on
+syntax on
 
 set autoindent
 set autoread
@@ -54,7 +51,9 @@ set undodir=~/.vim/tmp/undo
 set undofile
 set wildmenu
 
-" let g:fzf_layout = { 'window': 'enew' }
+let mapleader=","
+let maplocalleader="\\"
+
 let g:fzf_layout = { 'down': '~50%' }
 let g:go_fmt_command = "goimports"
 let g:slime_target = "tmux"

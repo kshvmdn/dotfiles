@@ -2,7 +2,8 @@
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="\[\033]0;\$(shortpwd)\007\]\W\$(__git_ps1 ' (%s)') \[$(tput bold)$(tput setaf 5)\]\$\[$(tput sgr0)\] "
 
-export EDITOR=vim;
+# Editor
+export EDITOR='vim'
 
 # Increase Bash history nsize; allow 32³ entries (default is 500); omit
 # duplicates and commands that begin with a space from history.
@@ -13,8 +14,8 @@ export HISTCONTROL="ignoreboth"
 # LS colors
 export LSCOLORS="hxFxCxdxBxegedabagacad"
 
-# Enable persistent REPL history for `node`; allow upto 32³ entries (default is
-# 1000); use sloppy mode by default, matching web browsers.
+# Enable persistent REPL history for `node`, allow upto 32³ entries (default is
+# 1000), and use sloppy mode by default, matching web browsers.
 export NODE_REPL_HISTORY=~/.node_history
 export NODE_REPL_HISTORY_SIZE="32768"
 export NODE_REPL_MODE="sloppy"

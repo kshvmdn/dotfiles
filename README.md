@@ -1,20 +1,15 @@
 ## dotfiles
 
-### Install
+My configuration files for [Bash](bash), [Git](git), [Homebrew](brew), [iTerm2](iterm), [tmux](tmux), and [more](extras).
 
-Installs my Bash, Vim, Git, and tmux configuration files. Moves all pre-existing configuration files to `$PWD/bak`. View [`install.sh`](./install.sh) for more information.
+### Installation
 
-```sh
-$ git clone https://github.com/kshvmdn/dotfiles dotfiles && cd $_
-$ ./install.sh
-```
-
-### Extras
-
-Installs [Homebrew](https://brew.sh/) and various formulae (refer to [`Brewfile`](./misc/Brewfile) / [`Caskfile`](./misc/Caskfile) for a list of software that'll be installed), as well as Go/Node tools. View [`extras.sh`](./extras.sh) for more information.
+I highly suggest that you read through each installation file before running the following commands. They'll likely overwrite your existing dotfiles.
 
 ```sh
-$ ./extras.sh
+$ git clone --recurisve https://github.com/kshvmdn/dotfiles.git
+$ cd dotfiles
+$ for dir in $(command ls); do [[ -d $dir && -f $dir/install.sh ]] && sh $dir/install.sh; done
 ```
 
-See [`st3`](./st3) for my Sublime Text 3 packages, icons, and themes of choice.
+Heavily inspired by [**@qasim**](https://github.com/qasim)'s [dotfiles](https://github.com/qasim/dotfiles).

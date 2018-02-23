@@ -1,3 +1,9 @@
+[submodule "extras/fonts/leaguemono"]
+	path = extras/fonts/leaguemono
+	url = https://github.com/kshvmdn/leaguemono
+[submodule "extras/sublime-text-3/themes/github-textmate-theme"]
+	path = extras/sublime-text-3/themes/github-textmate-theme
+	url = https://github.com/primer/github-textmate-theme
 [submodule "vim/.vim/bundle/editorconfig-vim"]
 	path = vim/.vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
@@ -37,9 +43,6 @@
 [submodule "vim/.vim/bundle/vim-slime"]
 	path = vim/.vim/bundle/vim-slime
 	url = https://github.com/jpalardy/vim-slime
-[submodule "misc/fonts/leaguemono"]
-	path = misc/fonts/leaguemono
-	url = https://github.com/kshvmdn/leaguemono
 [submodule "vim/.vim/bundle/supertab"]
 	path = vim/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab

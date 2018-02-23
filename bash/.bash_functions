@@ -57,57 +57,6 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRX;
 }
 
-# Git prompt
-function prompt_git() {
-  local s='';
-  local branch='';
-
-  # Check if the current directory is in a Git repository.
-  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
-
-    # check if the current directory is in .git before running git checks
-    if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
-
-      # Ensure the index is up to date.
-      git update-index --really-refresh -q &>/dev/null;
-
-      # Check for uncommitted changes in the index.
-      if ! $(git diff --quiet --ignore-submodules --cached); then
-        s+='+';
-      fi;
-
-      # Check for unstaged changes.
-      if ! $(git diff-files --quiet --ignore-submodules --); then
-        s+='!';
-      fi;
-
-      # Check for untracked files.
-      if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-        s+='?';
-      fi;
-
-      # Check for stashed files.
-      if $(git rev-parse --verify refs/stash &>/dev/null); then
-        s+='$';
-      fi;
-
-    fi;
-
-    # Get the short symbolic ref.
-    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-    # Otherwise, just give up.
-    branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
-      git rev-parse --short HEAD 2> /dev/null || \
-      echo '(unknown)')";
-
-    [ -n "${s}" ] && s=" [${s}]";
-
-    echo -e "${1}${branch}${2}${s}";
-  else
-    return;
-  fi;
-}
-
 function shortpwd() {
   cwd=$(pwd | sed "s#${HOME}#~#g" | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
   echo -n $cwd

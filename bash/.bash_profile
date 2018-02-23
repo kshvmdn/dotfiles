@@ -17,11 +17,11 @@ shopt -s histverify;
 shopt -s nocaseglob;
 
 # Bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  source "$(brew --prefix)/etc/bash_completion"
 fi
 
 # Git completion
-if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
-  source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+if [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]; then
+  source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
 fi
