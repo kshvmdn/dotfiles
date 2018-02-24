@@ -1,0 +1,103 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'dgryski/vim-godef', { 'for': 'Go' }
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'elzr/vim-json', {'for' : 'json'}
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go', { 'for': 'Go' }
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'plasticboy/vim-markdown'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'w0rp/ale'
+
+call plug#end()
+
+set nocompatible
+colorscheme off
+filetype plugin indent on
+syntax on
+
+set autoindent
+set autoread
+set background=dark
+set backspace=indent,eol,start
+set backupdir=~/.vim/tmp/backup
+set cindent
+set clipboard=unnamed
+set colorcolumn=80
+set directory=~/.vim/tmp/swap
+set display+=lastline
+set encoding=utf-8
+set expandtab
+set guicursor=
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set number
+set ruler
+set scrolloff=10
+set shiftround
+set shiftwidth=4
+set shortmess+=I
+set showcmd
+set showmatch
+set sidescroll=1
+set sidescrolloff=100
+set smartcase
+set smartindent
+set smarttab
+set softtabstop=4
+set splitbelow
+set splitright
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
+set synmaxcol=200
+set t_Co=256
+set tabstop=4
+set textwidth=80
+set title
+set ttimeoutlen=50
+set undodir=~/.vim/tmp/undo
+set undofile
+set wildmenu
+
+let mapleader=","
+let maplocalleader="\\"
+
+let g:fzf_layout = { 'down': '~20%' }
+let g:go_fmt_command = "goimports"
+let g:netrw_dirhistmax = 0
+let g:slime_target = "tmux"
+let g:sneak#label = 1
+let g:sneak#streak = 1
+
+augroup filetypedetect
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+  autocmd FileType c,cpp setlocal commentstring=//\ %s
+  autocmd FileType gitcommit setlocal colorcolumn=73 textwidth=73
+  autocmd FileType js setlocal shiftwidth=2 softtabstop=2 tabstop=2
+  autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+highlight ColorColumn ctermbg=236 guibg=#303030
+
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :Files<cr>
