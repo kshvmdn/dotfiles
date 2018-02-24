@@ -26,6 +26,9 @@ export PYTHONIOENCODING="UTF-8"
 # Go
 export GOPATH="$HOME/go"
 
+# GPG
+export GPG_TTY="$(tty)"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 
