@@ -1,6 +1,6 @@
 ## dotfiles
 
-My configuration files for [Bash](bash), [Git](git), [Homebrew](brew), [iTerm2](iterm), [tmux](tmux), and [more](extras).
+My configuration files for [Bash](bash), [Git](git), [Homebrew](brew), [iTerm2](iterm), [tmux](tmux), [vim](vim), and [more](extras).
 
 ### Installation
 
