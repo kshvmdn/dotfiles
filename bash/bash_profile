@@ -1,4 +1,4 @@
-for file in ~/.bash_{aliases,functions,exports,path}; do
+for file in ~/.config/bash/{aliases,functions,exports,path}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
