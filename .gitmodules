@@ -1,6 +1,0 @@
-[submodule "extras/fonts/leaguemono"]
-	path = extras/fonts/leaguemono
-	url = https://github.com/kshvmdn/leaguemono
-[submodule "extras/sublime-text-3/themes/github-textmate-theme"]
-	path = extras/sublime-text-3/themes/github-textmate-theme
-	url = https://github.com/primer/github-textmate-theme

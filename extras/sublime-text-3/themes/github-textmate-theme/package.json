@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "version": "0.5.0",
+  "name": "github-textmate-theme",
+  "description": "GitHub's official syntax themes as TextMate themes",
+  "homepage": "https://github.com/primer/github-textmate-theme#readme",
+  "author": "GitHub Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primer/github-textmate-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/primer/github-syntax-theme-generator/issues"
+  },
+  "scripts": {
+    "_version": "npm version $(npm view github-syntax-theme-generator version)",
+    "_commit": "git commit -am $(npm view github-syntax-theme-generator version)",
+    "_update": "npm update && cp node_modules/github-syntax-theme-generator/build/tmtheme/**/Themes/*.tmTheme .",
+    "ship": "npm run _update && npm run _commit && npm run _version && git push && git push --tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "syntax",
+    "css",
+    "theme",
+    "highlight",
+    "code",
+    "dark",
+    "textmate"
+  ],
+  "devDependencies": {
+    "github-syntax-theme-generator": "*"
+  }
+}
