@@ -84,6 +84,7 @@ let maplocalleader="\\"
 let g:fzf_layout = { 'down': '~20%' }
 let g:go_fmt_command = "goimports"
 let g:netrw_dirhistmax = 0
+let g:prettier#autoformat = 0
 let g:slime_target = "tmux"
 let g:sneak#label = 1
 let g:sneak#streak = 1
