@@ -6,4 +6,4 @@ if ! [ -x "$(which brew)" ]; then
 fi
 
 DIR=$(cd "$(dirname "$0")"; pwd -P)
-brew bundle --file="$DIR"/Brewfile
+brew bundle --file="$DIR"/Brewfile --verbose
