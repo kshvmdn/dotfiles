@@ -3,7 +3,7 @@
 	"caret_extra_top": 3,
 	"caret_style": "blink",
 	"color_scheme": "Packages/User/GitHub Light.tmTheme",
-	"draw_white_space": "all",
+	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
 	"fade_fold_buttons": false,
 	"find_selected_text": true,
@@ -17,7 +17,7 @@
 		".bundle",
 		"__pycache__"
 	],
-	"font_face": "League Mono Light",
+	"font_face": "Fira Code Light",
 	"font_size": 11,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
