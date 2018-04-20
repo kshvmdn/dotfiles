@@ -1,15 +1,12 @@
 ## dotfiles
 
-My configuration files for [Bash](bash), [Git](git), [Homebrew](brew), [iTerm2](iterm), [tmux](tmux), [vim](vim), and [more](extras).
+### Install
 
-### Installation
-
-I highly suggest that you read through each installation file before running the following commands. They'll likely overwrite your existing dotfiles.
-
-```sh
-$ git clone --recurisve https://github.com/kshvmdn/dotfiles.git
+```console
+$ git clone https://github.com/kshvmdn/dotfiles.git
 $ cd dotfiles
-$ for dir in $(command ls); do [[ -d $dir && -f $dir/install.sh ]] && sh $dir/install.sh; done
+$ ./etc/brew/install.sh
+$ for d in $(find . -maxdepth 1 -type d); do [ -f "$d/install.sh" ] && sh "$d/install.sh"; done
 ```
 
-Heavily inspired by [**@qasim**](https://github.com/qasim)'s [dotfiles](https://github.com/qasim/dotfiles).
+Heavily inspired by [qasim/dotfiles](https://github.com/qasim/dotfiles).

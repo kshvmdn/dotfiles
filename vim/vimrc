@@ -1,30 +1,34 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'acarapetis/vim-colors-github'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'cloudhead/shady.vim'
 Plug 'dgryski/vim-godef', { 'for': 'Go' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'elzr/vim-json', {'for' : 'json'}
+Plug 'elzr/vim-json', { 'for' : 'json' }
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go', { 'for': 'Go' }
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jelera/vim-javascript-syntax', { 'for': 'JavaScript' }
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pbrisbin/vim-colors-off'
+Plug 'plasticboy/vim-markdown'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-Plug 'plasticboy/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'w0rp/ale'
 
 call plug#end()
@@ -47,7 +51,6 @@ set display+=lastline
 set encoding=utf-8
 set expandtab
 set guicursor=
-set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
@@ -72,7 +75,6 @@ set synmaxcol=200
 set t_Co=256
 set tabstop=4
 set textwidth=80
-set title
 set ttimeoutlen=50
 set undodir=~/.vim/tmp/undo
 set undofile
@@ -99,6 +101,8 @@ augroup filetypedetect
 augroup END
 
 highlight ColorColumn ctermbg=236 guibg=#303030
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :Files<cr>

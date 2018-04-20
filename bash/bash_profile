@@ -3,10 +3,6 @@ for file in ~/.config/bash/{aliases,functions,exports,path}; do
 done
 unset file
 
-# Tab completion
-bind 'set show-all-if-ambiguous on'
-bind 'set completion-ignore-case on'
-
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 

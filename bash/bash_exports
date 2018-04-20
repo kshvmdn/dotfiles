@@ -1,6 +1,6 @@
 # Prompts
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1="\[\033]0;\$(shortpwd)\007\]\W\$(__git_ps1 ' (%s)') \[$(tput bold)$(tput setaf 5)\]\$\[$(tput sgr0)\] "
+export PS1="\[\033]0;\$(shortpwd)\007\]\W\$(__git_ps1 ' (%s)') \[$(tput bold)$(tput setaf 3)\]\$\[$(tput sgr0)\] "
 
 # Editor
 export EDITOR='vim'

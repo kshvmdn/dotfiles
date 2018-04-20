@@ -5,5 +5,4 @@ if ! [ -x "$(which brew)" ]; then
     https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-DIR=$(cd "$(dirname "$0")"; pwd -P)
-brew bundle --file="$DIR"/Brewfile --verbose
+brew bundle --file="$(cd "$(dirname "$0")"; pwd -P)/Brewfile" --verbose
