@@ -1,7 +1,12 @@
+set nocompatible
+
+" ------------------------------------------------------------------------------
+" PLUGINS
+" ------------------------------------------------------------------------------
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'acarapetis/vim-colors-github'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'cloudhead/shady.vim'
 Plug 'dgryski/vim-godef', { 'for': 'Go' }
@@ -10,99 +15,209 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'elzr/vim-json', { 'for' : 'json' }
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go', { 'for': 'Go' }
+Plug 'haya14busa/incsearch.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'jelera/vim-javascript-syntax', { 'for': 'JavaScript' }
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-sneak'
+Plug 'mileszs/ack.vim'
 Plug 'owickstrom/vim-colors-paramount'
+Plug 'pangloss/vim-javascript', { 'for': 'JavaScript' }
 Plug 'pbrisbin/vim-colors-off'
 Plug 'plasticboy/vim-markdown'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-Plug 'terryma/vim-multiple-cursors'
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'rgrinberg/vim-ocaml', { 'for': 'OCaml' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'w0rp/ale'
+Plug 'wlangstroth/vim-racket', { 'for': 'Racket' }
 
 call plug#end()
 
-set nocompatible
-colorscheme off
-filetype plugin indent on
-syntax on
+" ------------------------------------------------------------------------------
+" KEY MAPS
+" ------------------------------------------------------------------------------
+
+let mapleader=","
+let maplocalleader="\\"
+
+" Avoid weird behaviour when lines wrap.
+nmap j gj
+nmap k gk
+
+" Edit previously opened file.
+nmap <C-e> :e#<CR>
+
+" Move between open buffers.
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
+
+" Emacs-like bindings in insert mode
+imap <C-e> <C-o>$
+imap <C-a> <C-o>0
+
+" Emacs-like bindings in the command line.
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Del>
+cnoremap <C-e>  <End>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-g>  <C-c>
+
+" Use the space key to toggle folds.
+nnoremap <space> za
+vnoremap <space> zf
+
+" Fast window movement shortcuts.
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+" Resize panes when window/terminal gets resize.
+autocmd VimResized * :wincmd =
+
+" ------------------------------------------------------------------------------
+" OPTIONS
+" ------------------------------------------------------------------------------
 
 set autoindent
 set autoread
-set background=dark
+set autowrite
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup
 set cindent
 set clipboard=unnamed
 set colorcolumn=80
+set copyindent
 set directory=~/.vim/tmp/swap
-set display+=lastline
 set encoding=utf-8
 set expandtab
-set guicursor=
+set fileformats=unix,dos,mac
+silent! set foldmethod=marker
+set history=200
 set ignorecase
 set incsearch
+set infercase
 set laststatus=2
+set linebreak
+set matchtime=2
+set modelines=5
+silent! set mouse=nvc
 set number
 set ruler
-set scrolloff=10
+set scroll=4
+set scrolloff=15
 set shiftround
-set shiftwidth=4
-set shortmess+=I
-set showcmd
+set shiftwidth=2
+set showbreak=
 set showmatch
-set sidescroll=1
-set sidescrolloff=100
+set shortmess+=I
+set sidescrolloff=3
 set smartcase
 set smartindent
 set smarttab
 set softtabstop=4
-set splitbelow
-set splitright
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
-set synmaxcol=200
-set t_Co=256
 set tabstop=4
 set textwidth=80
-set ttimeoutlen=50
 set undodir=~/.vim/tmp/undo
 set undofile
+set visualbell t_vb=
+set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
 set wildmenu
+set wildmode=list:longest,full
 
-let mapleader=","
-let maplocalleader="\\"
+filetype plugin indent on
 
-let g:fzf_layout = { 'down': '~20%' }
-let g:go_fmt_command = "goimports"
-let g:netrw_dirhistmax = 0
-let g:prettier#autoformat = 0
-let g:slime_target = "tmux"
-let g:sneak#label = 1
-let g:sneak#streak = 1
+" ------------------------------------------------------------------------------
+" WEIRD CUSTOM STUFF
+" ------------------------------------------------------------------------------
 
-augroup filetypedetect
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+" Cause I always hit ":W" instead of ":w"
+command! Q q
+command! W w
 
-  autocmd FileType c,cpp setlocal commentstring=//\ %s
-  autocmd FileType gitcommit setlocal colorcolumn=73 textwidth=73
-  autocmd FileType js setlocal shiftwidth=2 softtabstop=2 tabstop=2
-  autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+" Trim spaces at EOL and retab.
+command! TEOL %s/\s\+$//
+command! CLEAN retab | TEOL
+
+" Close all buffers except this one
+command! BufCloseOthers %bd|e#
+
+" ------------------------------------------------------------------------------
+" PLUGIN SETTINGS
+" ------------------------------------------------------------------------------
+
+" ack.vim
+let g:ackprg = 'ag --vimgrep'
+
+" ALE
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+nmap ]l :ALENextWrap<CR>
+nmap [l :ALEPreviousWrap<CR>
+augroup VimDiff
+  autocmd!
+  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
 augroup END
 
-highlight ColorColumn ctermbg=236 guibg=#303030
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+" FZF
+set rtp+=~/.fzf
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>a :Ag<CR>
+nmap <Leader>c :Colors<CR>
 
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :Files<cr>
+" incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Prettier
+let g:prettier#autoformat = 0
+
+" Slime
+let g:slime_target = "tmux"
+
+" SuperTab
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
+
+" vim.go
+let g:go_fmt_command = "goimports"
+
+" ------------------------------------------------------------------------------
+" COLORS
+" ------------------------------------------------------------------------------
+
+set background=dark
+colorscheme off
+syntax on
+
+" ------------------------------------------------------------------------------
+" FILE TYPE TRIGGERS
+" ------------------------------------------------------------------------------
+
+augroup vimrc
+autocmd!
+
+au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet tw=73
+au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
+au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
+au FileType markdown syn sync fromstart
+
+augroup END

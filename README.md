@@ -5,7 +5,7 @@
 ```console
 $ git clone https://github.com/kshvmdn/dotfiles.git
 $ cd dotfiles
-$ ./etc/brew/install.sh
+$ ./brew/install.sh
 $ for d in $(find . -maxdepth 1 -type d); do [ -f "$d/install.sh" ] && sh "$d/install.sh"; done
 ```
 

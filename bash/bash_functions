@@ -57,6 +57,7 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRX;
 }
 
+# Shortened $PWD
 function shortpwd() {
   cwd=$(pwd | sed "s#${HOME}#~#g" | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
   echo -n $cwd

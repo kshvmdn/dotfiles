@@ -1,27 +1,4 @@
 set bell-style none
 set completion-ignore-case on
-set editing-mode vi
 set keyseq-timeout 50
 set show-all-if-ambiguous on
-set show-mode-in-prompt on
-set vi-cmd-mode-string \1\e[35;1m\2(cmd) \1\e[0m\2
-set vi-ins-mode-string \1\e[34;1m\2(ins) \1\e[0m\2
-
-# Keymaps for command mode (e.g., after hitting ESC)
-set keymap vi-command
-
-# When hitting option-up/option-down, cycle through the previous commands
-# which start with the prefix you've entered, rather than just cycling through
-# the last entered commands.
-"\e\e[A": history-search-backward
-"\e\e[B": history-search-forward
-
-# Keymaps for insert mode
-set keymap vi-insert
-
-# Option-up/option-down should also apply to insert mode
-"\e\e[A": history-search-backward
-"\e\e[B": history-search-forward
-
-# Clear screen on Ctrl+l.
-Control-l: clear-screen

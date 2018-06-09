@@ -5,15 +5,3 @@
 # Go
 [[ -d "$GOPATH/bin" && ":$PATH:" != *":$GOPATH/bin"* ]] && \
   export PATH="$PATH:$GOPATH/bin"
-
-# gvm
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-# nvm
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-
-# pyenv
-[[ -x "$(command -v pyenv)" ]] && eval "$(pyenv init -)"
-
-# rbenv
-[[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init -)"
