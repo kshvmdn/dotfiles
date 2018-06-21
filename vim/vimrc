@@ -215,6 +215,7 @@ syntax on
 augroup vimrc
 autocmd!
 
+au FileType c,cpp setlocal commentstring=//\ %s
 au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet tw=73
 au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
 au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
