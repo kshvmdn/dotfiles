@@ -12,6 +12,9 @@ shopt -s histverify
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
+# Enable forward-i-search
+[[ $- == *i* ]] && stty -ixon
+
 # Bash completion
 [[ -f "$(brew --prefix)/etc/bash_completion" ]] && \
   source "$(brew --prefix)/etc/bash_completion"
