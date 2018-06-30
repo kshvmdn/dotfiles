@@ -21,7 +21,6 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'kshvmdn/vim-searchfox'
 Plug 'mileszs/ack.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pangloss/vim-javascript', { 'for': 'JavaScript' }

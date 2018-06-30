@@ -17,8 +17,8 @@
 		".bundle",
 		"__pycache__"
 	],
-	"font_face": "Monoid",
-	"font_size": 8,
+	"font_face": "Fira Code Retina",
+	"font_size": 10,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":

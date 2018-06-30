@@ -1,8 +1,0 @@
-set bell-style none
-set completion-ignore-case on
-set keyseq-timeout 50
-set show-all-if-ambiguous on
-
-# Search through history with Alt+Up / Alt+Down
-"\e\e[A": history-search-backward
-"\e\e[B": history-search-forward

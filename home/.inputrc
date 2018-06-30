@@ -1,0 +1,18 @@
+# Never ring terminal bell
+set bell-style none
+
+# Make TAB autocomplete regardless of case
+set completion-ignore-case on
+
+# Show all autocomplete results at once
+set page-completions off
+
+# List all possible matches
+set show-all-if-ambiguous on
+
+# More intelligent autocompleting
+set skip-completed-text on
+
+# Use typed text as prefix when searching history with Up/Down
+"\e[A": history-search-backward
+"\e[B": history-search-forward

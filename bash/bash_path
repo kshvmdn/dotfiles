@@ -1,7 +1,0 @@
-# Cargo
-[[ -d "$HOME/.cargo/bin" && ":$PATH:" != *":$HOME/.cargo/bin"* ]] && \
-  export PATH="$PATH:$HOME/.cargo/bin"
-
-# Go
-[[ -d "$GOPATH/bin" && ":$PATH:" != *":$GOPATH/bin"* ]] && \
-  export PATH="$PATH:$GOPATH/bin"
