@@ -1,8 +1,37 @@
 [alias]
-    lo = log --pretty=oneline -n 20 --graph --abbrev-commit
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    # Append commit using previous commit message.
     amend = commit --amend --reuse-message=HEAD
+
+    # Checkout a branch, creating it if doesn't exist.
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Interactive rebase with the given offset.
     reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Shortcuts for common commands (because hg <3).
+    br = branch
+    ci = commit
+    cl = clone
+    cp = cherry-pick
+    co = checkout
+    di = diff
+    dc = diff --cached
+    st = status -s
+
+    # Misc. log shortcuts.
+    filelog = log -u
+    lo = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # Unstage any files that have been added to staging.
+    unstage = reset HEAD
+
+    # Mark/unmark a file as "assume unchanged" to make Git treat it as though
+    # there are no changes to it. Useful for temp. changes to tracked files.
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+
+    # Show all contributors and their contribution counts.
     contributors = shortlog --summary --numbered
 [apply]
     whitespace = fix

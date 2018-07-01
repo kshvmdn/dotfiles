@@ -6,37 +6,35 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'acarapetis/vim-colors-github'
 Plug 'airblade/vim-gitgutter'
 Plug 'cloudhead/shady.vim'
-Plug 'dgryski/vim-godef', { 'for': 'Go' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'elzr/vim-json', { 'for' : 'json' }
+Plug 'elzr/vim-json',                   { 'for' : 'json' }
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', { 'for': 'Go' }
-Plug 'fxn/vim-monochrome'
+Plug 'fatih/vim-go',                    { 'do': ':GoInstallBinaries', 'for': 'go' }
+Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'haya14busa/incsearch.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jpalardy/vim-slime'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'owickstrom/vim-colors-paramount'
-Plug 'pangloss/vim-javascript', { 'for': 'JavaScript' }
+Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'pbrisbin/vim-colors-off'
-Plug 'plasticboy/vim-markdown'
-Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-Plug 'rgrinberg/vim-ocaml', { 'for': 'OCaml' }
-Plug 'rust-lang/rust.vim', { 'for': 'Rust' }
+Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
+Plug 'prettier/vim-prettier',           { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'rgrinberg/vim-ocaml',             { 'for': 'ocaml' }
+Plug 'rust-lang/rust.vim',              { 'for': 'rust' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/YankRing.vim'
 Plug 'w0rp/ale'
-Plug 'wlangstroth/vim-racket', { 'for': 'Racket' }
+Plug 'wlangstroth/vim-racket',          { 'for': 'racket' }
 
 call plug#end()
 
@@ -86,9 +84,6 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-" Resize panes when window/terminal gets resize.
-autocmd VimResized * :wincmd =
-
 " ------------------------------------------------------------------------------
 " OPTIONS
 " ------------------------------------------------------------------------------
@@ -106,23 +101,27 @@ set directory=~/.vim/tmp/swap
 set encoding=utf-8
 set expandtab
 set fileformats=unix,dos,mac
-silent! set foldmethod=marker
+set foldmethod=manual
 set history=200
 set ignorecase
 set incsearch
 set infercase
 set laststatus=2
 set linebreak
+set list
+set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
 set matchtime=2
 set modelines=5
 silent! set mouse=nvc
+set nofoldenable
 set number
 set ruler
 set scroll=4
 set scrolloff=15
 set shiftround
 set shiftwidth=2
-set showbreak=
+set showbreak=\\ "
+set showcmd
 set showmatch
 set shortmess+=I
 set sidescrolloff=3
@@ -130,7 +129,6 @@ set smartcase
 set smartindent
 set smarttab
 set softtabstop=4
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
 set tabstop=4
 set textwidth=80
 set undodir=~/.vim/tmp/undo
@@ -202,8 +200,14 @@ let g:SuperTabLongestHighlight = 1
 " rust.vim
 let g:rustfmt_autosave = 1
 
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
 " vim.go
 let g:go_fmt_command = "goimports"
+
+" YankRing.vim
+let g:yankring_persist = 0
 
 " ------------------------------------------------------------------------------
 " COLORS
@@ -214,8 +218,16 @@ colorscheme off
 syntax on
 
 " ------------------------------------------------------------------------------
-" FILE TYPE TRIGGERS
+" STATUS LINE
 " ------------------------------------------------------------------------------
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
+
+" ------------------------------------------------------------------------------
+" MISC. TRIGGERS
+" ------------------------------------------------------------------------------
+
+" Resize panes when window/terminal gets resize.
+autocmd VimResized * :wincmd =
 
 augroup vimrc
 autocmd!
@@ -224,6 +236,5 @@ au FileType c,cpp setlocal commentstring=//\ %s
 au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet tw=73
 au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
 au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
-au FileType markdown syn sync fromstart
 
 augroup END
