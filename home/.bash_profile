@@ -77,16 +77,11 @@ function mkd() {
 
 # Change working directory to the top-most Finder window location
 function cdf() {
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
-}
+  if [ "$(uname)" != "Darwin" ]; then
+    exit 1
+  fi
 
-# Create a git.io short URL
-function gitio() {
-  if [ -z "${1}" -o -z "${2}" ]; then
-    echo "Usage: \`gitio slug url\`";
-    return 1;
-  fi;
-  curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # `s` with no arguments opens the current directory in Sublime Text, otherwise
@@ -170,6 +165,10 @@ export GPG_TTY=$(tty)
 export ANDROID_HOME="/usr/local/share/android-sdk"
 
 ### PATH #######################################################################
+
+# ~/bin
+[[ -d "$HOME/bin" && ":$PATH" != *":$HOME/bin"* ]] && \
+  export PATH="$PATH:$HOME/bin"
 
 # Cargo
 [[ -d "$HOME/.cargo/bin" && ":$PATH:" != *":$HOME/.cargo/bin"* ]] && \

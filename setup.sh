@@ -7,39 +7,42 @@
 #
 
 if [ $# -lt 1 ]; then
-  echo "usage: $0 <bash|brew|git|iterm|subl|tmux|vim> ..."
+  echo "usage: $0 <bash|bin|brew|git|iterm|subl|tmux|vim> ..."
   exit 1
 fi
 
-DIR=$(cd "$(dirname "$0")"; pwd -P)
+DIR=$(cd "$(dirname "$0")" || exit 1; pwd -P)
 
 for var in "$@"
 do
   case $var in
-    bash)   ln -fsv $DIR/home/.{bash{_profile,rc},inputrc} ~
+    bash)   ln -fsv "$DIR"/home/.{bash{_profile,rc},inputrc} ~
             ;;
-    brew)   ! [ -x "$(which brew)" ] && \
+    bin)    mkdir -p ~/bin
+            ln -fsv "$DIR"/bin/* ~/bin
+            ;;
+    brew)   ! [ -x "$(command -v brew)" ] && \
               /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-            brew bundle --file="$DIR/brew/Brewfile" --verbose
+            brew bundle --file="$DIR"/brew/Brewfile --verbose
             ;;
-    git)    ln -fsv $DIR/home/.git{config,ignore} ~
+    git)    ln -fsv "$DIR"/home/.git{config,ignore} ~
             ;;
-    iterm)  defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DIR/iterm"
+    iterm)  defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DIR"/iterm
             defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
             ;;
-    subl)   ! [ -x "$(which subl)" ] && exit 1
-            ln -fsv $DIR/sublime-text-3/*.sublime-settings \
-              "~/Library/Application Support/Sublime Text 3/Packages/User/"
+    subl)   ! [ -x "$(command -v subl)" ] && continue
+            ln -fsv "$DIR"/sublime-text-3/*.sublime-settings \
+              "$HOME/Library/Application Support/Sublime Text 3/Packages/User/"
             ;;
-    tmux)   ln -fsv $DIR/home/.tmux.conf ~
+    tmux)   ln -fsv "$DIR"/home/.tmux.conf ~
             ;;
     vim)    mkdir -pv ~/.vim/{autoload,tmp/{backup,swap,undo}}
             curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs \
               https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-            ln -fsv $DIR/vim/vimrc ~/.vim
+            ln -fsv "$DIR"/vim/vimrc ~/.vim
             vim +PlugInstall +qall
             ;;
-    *)      echo "No rule for \"$var\" :("
+    *)      echo "No match for \"$var\" :("
             ;;
   esac
 done
