@@ -39,7 +39,7 @@ Plug 'wlangstroth/vim-racket',          { 'for': 'racket' }
 call plug#end()
 
 " ------------------------------------------------------------------------------
-" KEY MAPS
+" MAPPINGS
 " ------------------------------------------------------------------------------
 
 let mapleader=","
@@ -56,7 +56,24 @@ nmap <C-e> :e#<CR>
 nmap <C-n> :bnext<CR>
 nmap <C-p> :bprev<CR>
 
-" Emacs-like bindings in insert mode
+" Fast window movement shortcuts.
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+" Redraw screen
+nmap <Leader>r :redraw!<CR>
+
+" Jump to beginning/end of line.
+nnoremap B ^
+nnoremap E $
+
+" Use space to toggle folds.
+nnoremap <space> za
+vnoremap <space> zf
+
+" Emacs-like bindings in insert mode.
 imap <C-e> <C-o>$
 imap <C-a> <C-o>0
 
@@ -73,16 +90,6 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
-
-" Use the space key to toggle folds.
-nnoremap <space> za
-vnoremap <space> zf
-
-" Fast window movement shortcuts.
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
 
 " ------------------------------------------------------------------------------
 " OPTIONS
@@ -144,16 +151,19 @@ filetype plugin indent on
 " WEIRD CUSTOM STUFF
 " ------------------------------------------------------------------------------
 
-" Cause I always hit ":W" instead of ":w"
-command! Q q
-command! W w
-
 " Trim spaces at EOL and retab.
 command! TEOL %s/\s\+$//
 command! CLEAN retab | TEOL
 
 " Close all buffers except this one
 command! BufCloseOthers %bd|e#
+
+" Cause I always hit ":W" instead of ":w"
+command! Q q
+command! W w
+
+" Cause I always hit "q:" but never need it
+map q: <Nop>
 
 " ------------------------------------------------------------------------------
 " PLUGIN SETTINGS
