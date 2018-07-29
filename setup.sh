@@ -16,7 +16,7 @@ DIR=$(cd "$(dirname "$0")" || exit 1; pwd -P)
 for var in "$@"
 do
   case $var in
-    bash)   ln -fsv "$DIR"/home/.{bash{_profile,rc},inputrc} ~
+    bash)   ln -fsv "$DIR"/home/.{bash{_{aliases,exports,functions,path,profile},rc},inputrc} ~
             ;;
     bin)    mkdir -p ~/bin
             ln -fsv "$DIR"/bin/* ~/bin

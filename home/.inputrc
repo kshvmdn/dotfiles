@@ -10,7 +10,7 @@ set page-completions off
 # List all possible matches
 set show-all-if-ambiguous on
 
-# More intelligent autocompleting
+# Consider the text after the cursor when autocompleting
 set skip-completed-text on
 
 # Use typed text as prefix when searching history with Up/Down
