@@ -7,17 +7,18 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'andreypopp/vim-colors-plain'
 Plug 'cloudhead/shady.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json',                   { 'for' : 'json' }
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go',                    { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'haya14busa/incsearch.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'mileszs/ack.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
@@ -90,6 +91,10 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
+
+" Preserve selection when indenting.
+vnoremap > >gv
+vnoremap < <gv
 
 " ------------------------------------------------------------------------------
 " OPTIONS
@@ -224,7 +229,7 @@ let g:yankring_persist = 0
 " ------------------------------------------------------------------------------
 
 set background=dark
-colorscheme off
+colorscheme plain
 syntax on
 
 " ------------------------------------------------------------------------------
