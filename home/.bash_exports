@@ -1,5 +1,8 @@
 # Prompts
-export GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWUPSTREAM="auto"
 export PS1="\[\033]0;\$(shortpwd)\007\]\W\$(__git_ps1 ' (%s)') \[$(tput bold)$(tput setaf 5)\]\$\[$(tput sgr0)\] "
 
 # Editor
