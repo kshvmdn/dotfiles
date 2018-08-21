@@ -22,6 +22,8 @@ brew "vim", args: ["with-override-system-vi"]
 brew "wget"
 
 cask "1password"
+cask "android-platform-tools"
+cask "android-sdk"
 cask "appcleaner"
 cask "chromium"
 cask "docker-edge"
