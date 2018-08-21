@@ -13,13 +13,13 @@ fi
 
 DIR=$(cd "$(dirname "$0")" || exit 1; pwd -P)
 
-for var in "$@"
+for x in "$@"
 do
-  case $var in
+  case $x in
     bash)   ln -fsv "$DIR"/home/.{bash{_{aliases,exports,functions,path,profile},rc},inputrc} ~
             ;;
-    bin)    mkdir -p ~/bin
-            ln -fsv "$DIR"/bin/* ~/bin
+    bin)    mkdir -p ~/workspace/bin
+            ln -fsv "$DIR"/bin/* ~/workspace/bin
             ;;
     brew)   ! [ -x "$(command -v brew)" ] && \
               /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -42,7 +42,7 @@ do
             ln -fsv "$DIR"/vim/vimrc ~/.vim
             vim +PlugInstall +qall
             ;;
-    *)      echo "No match for \"$var\" :("
+    *)      echo "No match for \"$x\" :("
             ;;
   esac
 done

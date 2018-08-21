@@ -16,10 +16,11 @@ alias ~='cd'
 alias -- -='cd -'
 
 # Shortcuts
-alias dev='cd ~/dev'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
-alias school='cd ~/dev/src/github.com/kshvmdn/uoft'
+alias ws='cd ~/workspace'
+alias dots='ws && cd src/github.com/kshvmdn/dotfiles'
+alias sc='ws && cd src/github.com/kshvmdn/uoft'
 
 # Hide/show all Desktop icons
 alias desktop-hide='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
