@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+if __name__ == '__main__':
+    import sys
+    import urllib
+    import webbrowser
+
+    base = "https://explainshell.com/explain?cmd=%s"
+    webbrowser.open_new(base % urllib.quote(' '.join(sys.argv[1:])))
