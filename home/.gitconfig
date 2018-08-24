@@ -60,12 +60,12 @@
     gpgsign = true
 [gpg]
     program = gpg
-[http]
-    cookiefile = /Users/kashavmadan/.gitcookies
 [merge]
     log = true
 [push]
     followTags = true
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 [user]
     name = Kashav Madan
     email = kshvmdn@gmail.com
