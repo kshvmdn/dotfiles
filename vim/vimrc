@@ -1,8 +1,22 @@
-set nocompatible
+let mapleader=","
+let maplocalleader="\\"
+
+set encoding=utf-8
 
 " ------------------------------------------------------------------------------
 " PLUGINS
 " ------------------------------------------------------------------------------
+
+" Auto install plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  augroup PLUG
+    au!
+    autocmd VimEnter * PlugInstall
+  augroup END
+endif
 
 call plug#begin('~/.vim/plugged')
 
@@ -18,7 +32,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
+Plug 'machakann/vim-highlightedyank'
 Plug 'mileszs/ack.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
@@ -26,29 +40,90 @@ Plug 'pbrisbin/vim-colors-off'
 Plug 'plasticboy/vim-markdown',         { 'for': 'markdown' }
 Plug 'prettier/vim-prettier',           { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'rgrinberg/vim-ocaml',             { 'for': 'ocaml' }
+Plug 'rstacruz/vim-closer'
 Plug 'rust-lang/rust.vim',              { 'for': 'rust' }
+Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-scripts/YankRing.vim'
 Plug 'w0rp/ale'
 Plug 'wlangstroth/vim-racket',          { 'for': 'racket' }
 
 call plug#end()
 
 " ------------------------------------------------------------------------------
-" MAPPINGS
+" PLUGIN OPTIONS
 " ------------------------------------------------------------------------------
 
-let mapleader=","
-let maplocalleader="\\"
+filetype plugin indent on
 
-" Avoid weird behaviour when lines wrap.
-nmap j gj
-nmap k gk
+" ervandew/supertab
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
+
+" fatih/vim-go
+let g:go_fmt_command = "goimports"
+
+" haya14busa/incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" jpalardy/vim-slime
+let g:slime_target = "tmux"
+
+" junegunn/fzf.vim
+set rtp+=~/.fzf
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>a :Ag<CR>
+nmap <Leader>c :Colors<CR>
+
+" machakann/vim-highlightedyank
+let g:highlightedyank_highlight_duration = 300
+
+" mileszs/ack.vim
+let g:ackprg = 'ag --vimgrep'
+
+" plasticboy/vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+" prettier/vim-prettier
+let g:prettier#autoformat = 0
+
+" rust-lang/rust.vim
+let g:rustfmt_autosave = 1
+
+" terryma/vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" w0rp/ale
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+nmap ]l :ALENextWrap<CR>
+nmap [l :ALEPreviousWrap<CR>
+augroup VimDiff
+  autocmd!
+  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
+augroup END
+
+" ------------------------------------------------------------------------------
+" KEYBINDS
+" ------------------------------------------------------------------------------
+
+" Use hjkl-movement when soft wrapping.
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " Edit previously opened file.
 nmap <C-e> :e#<CR>
@@ -93,64 +168,8 @@ cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
 " Preserve selection when indenting.
-vnoremap > >gv
-vnoremap < <gv
-
-" ------------------------------------------------------------------------------
-" OPTIONS
-" ------------------------------------------------------------------------------
-
-set autoindent
-set autoread
-set autowrite
-set backspace=indent,eol,start
-set backupdir=~/.vim/tmp/backup
-set cindent
-set clipboard=unnamed
-set colorcolumn=80
-set copyindent
-set directory=~/.vim/tmp/swap
-set encoding=utf-8
-set expandtab
-set fileformats=unix,dos,mac
-set foldmethod=manual
-set history=200
-set ignorecase
-set incsearch
-set infercase
-set laststatus=2
-set linebreak
-set list
-set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
-set matchtime=2
-set modelines=5
-silent! set mouse=nvc
-set nofoldenable
-set number
-set ruler
-set scroll=4
-set scrolloff=15
-set shiftround
-set shiftwidth=2
-set showbreak=\\ "
-set showcmd
-set showmatch
-set shortmess+=I
-set sidescrolloff=3
-set smartcase
-set smartindent
-set smarttab
-set softtabstop=4
-set tabstop=4
-set textwidth=80
-set undodir=~/.vim/tmp/undo
-set undofile
-set visualbell t_vb=
-set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
-set wildmenu
-set wildmode=list:longest,full
-
-filetype plugin indent on
+vmap > >gv
+vmap < <gv
 
 " ------------------------------------------------------------------------------
 " WEIRD CUSTOM STUFF
@@ -163,93 +182,105 @@ command! CLEAN retab | TEOL
 " Close all buffers except this one
 command! BufCloseOthers %bd|e#
 
-" Cause I always hit ":W" instead of ":w"
-command! Q q
-command! W w
-
 " Cause I always hit "q:" but never need it
 map q: <Nop>
 
 " ------------------------------------------------------------------------------
-" PLUGIN SETTINGS
+" AUTO COMMANDS
 " ------------------------------------------------------------------------------
 
-" ack.vim
-let g:ackprg = 'ag --vimgrep'
-
-" ALE
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-nmap ]l :ALENextWrap<CR>
-nmap [l :ALEPreviousWrap<CR>
-augroup VimDiff
-  autocmd!
-  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
-augroup END
-
-" FZF
-set rtp+=~/.fzf
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>r :Tags<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>a :Ag<CR>
-nmap <Leader>c :Colors<CR>
-
-" incsearch.vim
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Prettier
-let g:prettier#autoformat = 0
-
-" Slime
-let g:slime_target = "tmux"
-
-" SuperTab
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabLongestHighlight = 1
-
-" rust.vim
-let g:rustfmt_autosave = 1
-
-" vim-markdown
-let g:vim_markdown_folding_disabled = 1
-
-" vim.go
-let g:go_fmt_command = "goimports"
-
-" YankRing.vim
-let g:yankring_persist = 0
-
-" ------------------------------------------------------------------------------
-" COLORS
-" ------------------------------------------------------------------------------
-
-set background=dark
-colorscheme plain
-syntax on
-
-" ------------------------------------------------------------------------------
-" STATUS LINE
-" ------------------------------------------------------------------------------
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
-
-" ------------------------------------------------------------------------------
-" MISC. TRIGGERS
-" ------------------------------------------------------------------------------
-
-" Resize panes when window/terminal gets resize.
+" Resize panes when window/terminal gets resized.
 autocmd VimResized * :wincmd =
 
-augroup vimrc
-autocmd!
-
-au FileType c,cpp setlocal commentstring=//\ %s
-au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet tw=73
-au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
-au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
-
+augroup General
+  autocmd!
+  au FileType c,cpp setlocal commentstring=//\ %s
+  au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet tw=73
+  au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
+  au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
 augroup END
+
+" ------------------------------------------------------------------------------
+" OPTIONS
+" ------------------------------------------------------------------------------
+
+" LOOK AND FEEL
+
+  set colorcolumn=80
+  set cmdheight=1
+  set laststatus=2
+  set list
+  set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
+  set number
+  set scrolloff=15
+  set shortmess+=aI
+  set showbreak=\\ "
+  set showcmd
+  set sidescrolloff=3
+  set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
+
+  colorscheme plain
+  syntax on
+
+" TEXT
+
+  set autoindent
+  set cindent
+  set copyindent
+  set expandtab
+  set shiftround
+  set shiftwidth=2
+  set smartindent
+  set smarttab
+  set softtabstop=4
+  set tabstop=4
+  set textwidth=80
+
+" SEARCHING
+
+  set ignorecase
+  set incsearch
+  set infercase
+  set smartcase
+
+" FOLDING
+
+  set foldmethod=manual
+  set foldlevel=99
+  set foldlevelstart=0
+  set nofoldenable
+
+" TEMP FILES
+
+  set backupdir=~/.vim/tmp/backup
+  set noswapfile
+  set undodir=~/.vim/tmp/undo
+  set undofile
+  set undolevels=500
+  set undoreload=500
+
+  if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), 'p')
+  endif
+
+  if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), 'p')
+  endif
+
+" COMMAND LINE
+
+  set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
+  set wildmenu
+  set wildmode=list:longest,full
+
+" MISC
+
+  set autoread
+  set autowrite
+  set backspace=indent,eol,start
+  set clipboard+=unnamed
+  set fileformats=unix,dos,mac
+  set matchtime=2
+  set mouse=nvc
+  set showmatch
+  set visualbell t_vb=
