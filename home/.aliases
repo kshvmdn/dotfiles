@@ -1,11 +1,15 @@
+#!/usr/bin/env bash
+
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
-# File/directory listing
-alias ls="ls -F"
-alias ll="ls -lhiF"
-alias la="ls -alhiF"
-alias lt="ls -Alhrt"
+# `ls`
+alias ls='ls -F'
+alias ll='ls -lhiF'
+alias la='ls -alhiF'
+alias lt='ls -Alhrt'
 
 # Navigation
 alias ..='cd ..'
@@ -22,14 +26,14 @@ alias ws='cd ~/workspace'
 alias dots='ws && cd src/github.com/kshvmdn/dotfiles'
 alias sc='ws && cd src/github.com/kshvmdn/uoft'
 
-# Hide/show all Desktop icons
+# Toggle Desktop icons
 alias desktop-hide='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
 alias desktop-show='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
 # Empty the Trash on all mounted volumes and the main HDD
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-# Hide/show hidden files in Finder
+# Toggle hidden files in Finder
 alias hidden-hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 alias hidden-show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 
@@ -41,4 +45,4 @@ alias ippub='dig +short myip.opendns.com @resolver1.opendns.com'
 alias reload='exec $SHELL -l'
 
 # :)
-alias :q='exit 1'
+alias :q='exit 0'

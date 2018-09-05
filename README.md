@@ -2,5 +2,5 @@
 
 ```sh
 $ git clone https://github.com/kshvmdn/dotfiles.git
-$ ./dotfiles/setup.sh <bash|bin|brew|git|iterm|subl|tmux|vim> ...
+$ make -C dotfiles [bash|bin|brew|git|iterm|scripts|subl|tmux|vim] ...
 ```

@@ -1,26 +1,28 @@
-for n in "aliases" "functions" "exports" "path"; do
-  if [[ -f "$HOME/.bash_$n" ]]; then
-    source "$HOME/.bash_$n"
-    unset n
+#!/usr/bin/env bash
+
+for file in ~/.{aliases,functions,exports,dockerfunc}; do
+  if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+    source "$file"
   fi
 done
+unset file
 
-# Append to the Bash history file, rather than overwriting it
+# Autocorrect typos in path names when using `cd`.
+shopt -s cdspell
+
+# Append to the Bash history file, rather than overwriting it.
 shopt -s histappend
 
 # Don't automatically run history commands.
 shopt -s histverify
 
-# Case-insensitive globbing (used in pathname expansion)
+# Case-insensitive globbing (used in pathname expansion).
 shopt -s nocaseglob
 
 # Enable forward-i-search
 [[ $- == *i* ]] && stty -ixon
 
 # Bash completion
-[[ -f "$(brew --prefix)/etc/bash_completion" ]] && \
+if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
   source "$(brew --prefix)/etc/bash_completion"
-
-# Git completion
-[[ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]] && \
-  source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
+fi

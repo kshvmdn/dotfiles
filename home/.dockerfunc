@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bash wrappers for Docker `run` commands.
+
+texlive() {
+  docker run -i --rm \
+         -v "$PWD":/data \
+         --net none \
+         --user="$(id -u):$(id -g)" \
+         --name texlive
+         blang/latex "$@"
+}
