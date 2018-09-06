@@ -3,7 +3,7 @@ help:
 	@echo "Install kshvmdn's dotfiles."
 	@echo
 	@echo "Usage:"
-	@echo "  make [bash|bin|brew|git|iterm|scripts|subl|tmux|vim] ..."
+	@echo "  make [bash|brew|git|iterm|scripts|subl|tmux|vim] ..."
 
 .PHONY: bash
 bash:
