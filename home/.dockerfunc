@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Bash wrappers for Docker `run` commands.
 
-texlive() {
+docker-jekyll() {
+  docker run -it --rm \
+        -v "$PWD":/srv/jekyll \
+        -p ${PORT:-4000}:4000 \
+        jekyll/jekyll "$@"
+}
+docker-texlive() {
   docker run -i --rm \
          -v "$PWD":/data \
-         --net none \
-         --user="$(id -u):$(id -g)" \
-         --name texlive
          blang/latex "$@"
 }
