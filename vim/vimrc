@@ -87,7 +87,7 @@ nmap <Leader>c :Colors<CR>
 let g:highlightedyank_highlight_duration = 300
 
 " mileszs/ack.vim
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep --no-heading'
 
 " plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled = 1
