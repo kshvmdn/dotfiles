@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Bash wrappers for `docker run` commands.
+
+__black() {
+  docker run -it --rm \
+    -v "$PWD":/code \
+    jbbarth/black "$@"
+}
+__clang-format() {
+  docker run -it --rm \
+    -v "$PWD":/workdir \
+    -w /workdir \
+    unibeautify/clang-format "$@"
+}
+__jekyll() {
+  docker run -it --rm \
+    -v "$PWD":/srv/jekyll \
+    -p ${PORT:-4000}:4000 \
+    jekyll/jekyll "$@"
+}
+__latex() {
+  docker run -it --rm \
+    --net none \
+    -v "$PWD":/data \
+    blang/latex "$@"
+}
+
+case "$1" in
+  black) __black "${@:2}" ;;
+  clang-format) __clang-format "${@:2}" ;;
+  jekyll) __jekyll "${@:2}" ;;
+  latex) __latex "${@:2}" ;;
+  *) echo "No match for \"$1\" :("
+     exit 1
+     ;;
+esac

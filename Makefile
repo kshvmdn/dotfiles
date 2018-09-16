@@ -3,11 +3,16 @@ help:
 	@echo "Install kshvmdn's dotfiles."
 	@echo
 	@echo "Usage:"
-	@echo "  make [bash|brew|git|iterm|scripts|subl|tmux|vim] ..."
+	@echo "  make [bash|bin|brew|git|iterm|subl|tmux|vim] ..."
 
 .PHONY: bash
 bash:
 	@ln -fsv $(CURDIR)/home/.{aliases,bash{_profile,rc},dockerfunc,exports,functions,inputrc,path} ~
+
+.PHONY: bin
+bin:
+	@find $(CURDIR)/bin -type f -exec ln -fsv {} /usr/local/bin \;
+	@echo "Run \`install.sh\` to install stuff."
 
 .PHONY: brew
 brew:
@@ -17,7 +22,7 @@ brew:
 .PHONY: git
 git:
 	@ln -fsv $(CURDIR)/home/.git{config,ignore} ~
-	@echo "Update your user details in $(HOME)/.gitconfig :"
+	@echo "Update your credentials in $(HOME)/.gitconfig :"
 	@echo "\t$$ git config --global user.name \"NAME\""
 	@echo "\t$$ git config --global user.email \"EMAIL\""
 	@echo "\t$$ git config --global user.signingkey \"SIGNING KEY\""
@@ -26,15 +31,6 @@ git:
 iterm:
 	@defaults write com.googlecode.iterm2 PrefsCustomFolder -string $(CURDIR)/iterm
 	@defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
-
-.PHONY: scripts
-scripts:
-	@curl -sSL https://raw.githubusercontent.com/xvoland/Extract/master/extract.sh > /usr/local/bin/extract
-	@chmod +x /usr/local/bin/extract
-	@curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  > /usr/local/bin/speedtest
-	@chmod +x /usr/local/bin/speedtest
-	@curl -sSL https://raw.githubusercontent.com/hnarayanan/shpotify/master/spotify > /usr/local/bin/spotify
-	@chmod +x /usr/local/bin/spotify
 
 .PHONY: subl
 subl:
